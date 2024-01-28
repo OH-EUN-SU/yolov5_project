@@ -27,10 +27,11 @@ class BoardApp:
 
         for i in range(len(parts)):
             if i < len(urls):
-                self.board_text.insert(tk.END, parts[i], f"url_{i}")
-                self.board_text.tag_add(f"url_{i}", f"{tk.END}-{len(parts[i])}c", tk.END)
-                self.board_text.tag_config(f"url_{i}", foreground="blue", underline=True)
-                self.board_text.tag_bind(f"url_{i}", "<Button-1>", lambda e, url=urls[i]: self.open_url(url))
+                tag_name = f"url_{i}"
+                self.board_text.tag_config(tag_name, foreground="blue", underline=True)  # 새로운 태그 정의 및 스타일 설정
+                self.board_text.insert(tk.END, parts[i], tag_name)
+                self.board_text.tag_add(tag_name, f"{tk.END}-{len(parts[i])}c", tk.END)
+                self.board_text.tag_bind(tag_name, "<Button-1>", lambda e, url=urls[i]: self.open_url(url))
             else:
                 self.board_text.insert(tk.END, parts[i])
 

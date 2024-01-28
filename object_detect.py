@@ -3,8 +3,8 @@ from PIL import Image, ImageTk
 import torch
 import time
 
-model = torch.hub.load('ultralytics/yolov5', 'custom', path = 'C:/yolov5-master/yolov5-master/runs/train/fallenperson_yolov5s_results2/weights/best.pt')
-#model = torch.hub.load('ultralytics/yolov5', 'custom', path = 'C:/yolov5-master/yolov5-master/runs/train/fall/weights/best.pt')
+#model = torch.hub.load('ultralytics/yolov5', 'custom', path = 'C:/yolov5-master/yolov5-master/runs/train/fallenperson_yolov5s_results2/weights/best.pt')
+model = torch.hub.load('ultralytics/yolov5', 'custom', path = 'C:/yolov5-master/yolov5-master/runs/train/fall/weights/best.pt')
 
 class VideoBox:
 
@@ -19,6 +19,9 @@ class VideoBox:
         self.__source = source
         self.board = board
 
+    def get_source(self):
+        return self.__source
+    
     def main_page(self): 
 
         cap = cv2.VideoCapture(self.__source)
